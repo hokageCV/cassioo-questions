@@ -16,6 +16,8 @@
 
 def longest_common_prefix(words)
   prefix = ''
+  return prefix if words.empty?
+
   lengths = {}
   shortest_word_length = Float::INFINITY
 
@@ -33,7 +35,8 @@ def longest_common_prefix(words)
       count += 1 if word[index] == current_letter
     end
 
-    prefix.concat(current_letter) if count == words.length
+    break if not count == words.length
+    prefix.concat(current_letter)
   end
 
   prefix
@@ -44,3 +47,5 @@ end
 puts longest_common_prefix(['flower','flow','flowt'])
 puts longest_common_prefix(['dog','racecar','car'])
 puts longest_common_prefix(['interstellar','internet','interval'])
+puts longest_common_prefix([])
+puts longest_common_prefix(['car', 'cir'])
